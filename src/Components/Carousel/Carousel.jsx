@@ -9,6 +9,7 @@ import {img} from './Images/Data';
 function CarouselEffect() {
   return (
     <div>
+      {/* sliding image using carousel effect */}
        <Carousel
       autoPlay= {true}
       infiniteLoop={true}
@@ -17,6 +18,7 @@ function CarouselEffect() {
          showArrows={true} 
         >
        
+       {/* accessing images from array img exported from data jsx destructured data by array.map */}
         {
             img.map((img, index)=>{
               
