@@ -6,16 +6,17 @@ import { CiLocationOn } from "react-icons/ci";
 import { BsSearch } from "react-icons/bs";
 import { BiCart } from "react-icons/bi";
 import LowerHeader from './LowerHeader';
+import { Link } from 'react-router';
 
 function Header() {
   return (
     <section className={Classes.fixed}>
     <section className={Classes.header_container}>
       <div className={Classes.logo_container}>
-        <a href="/">
+        <Link to="/">
        
           <img src={AmazonLogo} alt="Amazon Logo" />
-        </a>
+        </Link>
 
         <div className={Classes.delivery}>
           <div>
@@ -74,7 +75,7 @@ function Header() {
         <BsSearch size={25} />
       </div>
       <div className={Classes.order_container}>
-        <a href="" className={Classes.language}>
+        <Link to="" className={Classes.language}>
           
           <img
             src="https://catamphetamine.gitlab.io/country-flag-icons/3x2/US.svg"
@@ -85,22 +86,22 @@ function Header() {
           <select name="" id="">
             <option value="">EN</option>
           </select>
-        </a>
-        <a href="">
+        </Link>
+        <Link to="/Auth">
           <p>Sign In</p>
           <span >Account & Lists</span>
-        </a>
-        <a href="">
+        </Link>
+        <Link to="/orders">
          <p>Returns</p>
          <span>& Orders</span>
-        </a>
+        </Link>
 
-        <a href="/cart" className={Classes.cart}>
+        <Link to="/cart" className={Classes.cart}>
         <div><BiCart size={35} />
         <span>0</span></div>
           
           <div>Cart</div>
-        </a>
+        </Link>
       </div>
     </section>
     
