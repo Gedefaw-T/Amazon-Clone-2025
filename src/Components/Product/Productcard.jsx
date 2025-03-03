@@ -1,16 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Rating } from "@mui/material";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import Classes from "../Product/Product.module.css";
+import { Link } from "react-router";
 
 function Productcard({product}) {
     // destructure data from fakestore api and passed as props
     const { image, id, title, price, rating, category, description } = product;
   return (
     <div className={Classes.productcard_container}>
-      <a href="">
+      <Link to={`/products/${id}`}>
         <img className={Classes.image_container} src={image} alt="" />
-      </a>
+      </Link>
       <div>
         <h5>{title}</h5>
         
