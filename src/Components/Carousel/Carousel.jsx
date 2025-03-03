@@ -25,6 +25,8 @@ function CarouselEffect() {
         }
 
       </Carousel>
+
+      {/* creating place fore fade setting */}
       <div className={CarouselStyle.hero_img}></div>
       
     </div>

@@ -1,0 +1,55 @@
+
+.Category{
+    height: 280px;
+    width: 280px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    
+}
+.Category img{
+    width: 100%;
+    object-fit: contain; 
+    max-height: 200px;
+    padding: 0 10px;
+    box-sizing: border-box;
+
+    
+}
+.Category p{
+    position: absolute;
+    bottom: 3px;
+   
+ 
+}
+
+.Category a{
+    text-decoration: none;
+    color: rgb(35, 35, 35);
+
+}
+.Category h2 
+.Category p{
+padding: 5px;
+margin-left: 15px;
+}
+.Category p{
+    font-size: 12px;
+    font-weight: bold;
+    color:rgb(9, 132, 209);
+}
+.Category_Container{
+  
+    position: relative;
+    margin-top: -10%; 
+display: grid;
+
+
+/* column-gap: 20px; */
+grid-template-columns: repeat(4, 1fr);
+/* place-self: center; */
+/* text-align: center; */
+place-items: center;
+
+
+}
