@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Classes from "./Header.module.css";
 import AmazonLogo from "/AmazonLogo.png";
 
@@ -7,8 +7,10 @@ import { BsSearch } from "react-icons/bs";
 import { BiCart } from "react-icons/bi";
 import LowerHeader from './LowerHeader';
 import { Link } from 'react-router';
+import { DataContext } from "../DataProvider/DataProvider";
 
 function Header() {
+  const [{ basket }, dispatch] = useContext(DataContext);
   return (
     <section className={Classes.fixed}>
     <section className={Classes.header_container}>
@@ -98,7 +100,7 @@ function Header() {
 
         <Link to="/cart" className={Classes.cart}>
         <div><BiCart size={35} />
-        <span>0</span></div>
+        <span>{basket?.length}</span></div>
           
           <div>Cart</div>
         </Link>

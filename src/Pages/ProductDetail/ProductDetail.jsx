@@ -32,7 +32,7 @@ axios.get(`${productUrl}/products/${productId}`)
     <Layout>
       
      { loader?(<Load/>) : 
-      <ProductCard product= {product} flex = {true} descriptionRend ={true}  renderAdd ={true}  />}
+      <ProductCard product= {product} flex = {true} descriptionRend ={true}  renderAdd ={false}  />}
     </Layout>
   )
 }

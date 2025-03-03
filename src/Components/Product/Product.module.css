@@ -1,6 +1,5 @@
 .productcard_container {
     width: 200px;
-    ;
        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     padding: 10px;
     color: black;
@@ -58,4 +57,38 @@
   }
   .products_container section{
     margin: 0 auto;
+  }
+  .product_flexed {
+    box-shadow: none;
+ 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+      gap: 50px;
+    width: 100%;
+    margin-inline: 0;
+  }
+  .product_flexed h3 {
+    padding: 20px 0px;
+  }
+  .product_flexed button {
+    display: block;
+    position: relative;
+    width: 150px;
+    margin-right: 40px;
+  }
+  .product_flexed {
+    height: 50vh;
+  }
+  .product_flexed img {
+    width: 300px !important;
+    height: auto;
+    box-sizing: border-box;
+  }
+  @media screen and(max-width: 768px) {
+    .product_flexed {
+      display: flex;
+      flex-direction: column;
+    }
   }

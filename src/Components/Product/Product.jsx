@@ -23,7 +23,7 @@ function Product() {
       {/* calling the data using map method from states */}
       {products?.map((singleProduct, id) => {
         // passing data to child component using props
-        return <Productcard key={id} product={singleProduct} />;
+        return <Productcard key={id} product={singleProduct} descriptionRend ={false}  renderAdd ={true} />;
       })}
     </section>
   );
