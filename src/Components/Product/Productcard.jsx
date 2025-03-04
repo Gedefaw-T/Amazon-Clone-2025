@@ -10,6 +10,7 @@ function Productcard({ product, flex, descriptionRend, renderAdd }) {
   // destructure data from fakestore api and passed as props
   const { image, id, title, price, rating, category, description } = product;
   const [state, dispatch] = useContext(DataContext);
+  // function for adding to cart bind to click actvity
   const addToCart = () => {
     dispatch({
       type: Type.ADD_TO_BASKET,
