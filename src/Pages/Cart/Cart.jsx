@@ -2,19 +2,18 @@ import React, { useContext } from "react";
 import Layout from "../../Components/Layout/Layout";
 import { DataContext } from "../../Components/DataProvider/DataProvider";
 import ProductCard from "../../Components/Product/ProductCard";
-   import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat"
+import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router";
 import Classes from "./Cart.module.css";
-
 
 function Cart() {
   const [{ basket, user }, dispatch] = useContext(DataContext);
   // total price calculator using array.reuce method to add the exsting price to the curent
   const total = basket.reduce((amount, item) => {
-    return item.price  + amount;
+    return item.price*item.amount + amount;
   }, 0);
   console.log(total);
-  
+
   return (
     <Layout>
       <section className={Classes.container}>
@@ -37,7 +36,6 @@ function Cart() {
                     descriptionRend={true}
                     flex={true}
                   />
-
                 </section>
               );
             })
