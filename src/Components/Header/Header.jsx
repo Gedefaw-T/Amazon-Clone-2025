@@ -79,7 +79,7 @@ function Header() {
           name="search"
           size="50"
         />
-        <BsSearch size={25} />
+        <BsSearch size={38} />
       </div>
       <div className={Classes.order_container}>
         <Link to="" className={Classes.language}>
