@@ -5,14 +5,38 @@ import ProductCard from "../../Components/Product/ProductCard";
 import CurrencyFormat from "../../Components/CurrencyFormat/CurrencyFormat";
 import { Link } from "react-router";
 import Classes from "./Cart.module.css";
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { Type } from "../../Pages/Utility/ActionType";
 
 function Cart() {
   const [{ basket, user }, dispatch] = useContext(DataContext);
   // total price calculator using array.reuce method to add the exsting price to the curent
   const total = basket.reduce((amount, item) => {
-    return item.price*item.amount + amount;
+    return item.price * item.amount + amount;
   }, 0);
   console.log(total);
+
+  const totalItem = basket?.reduce((amount, item) => {
+    return (item?.amount || 0) + amount;
+  }, 0);
+
+  // function to add items to the existing item in the basket
+  const Increament = (item) => {
+    dispatch({
+      type: Type.ADD_TO_BASKET,
+      item,
+    });
+  };
+
+  // function to remove items from basket
+
+  const Decreament = (id) => {
+    dispatch({
+      type: Type.REMOVE_FROM_BASKET,
+      id,
+    });
+  };
 
   return (
     <Layout>
@@ -36,6 +60,22 @@ function Cart() {
                     descriptionRend={true}
                     flex={true}
                   />
+
+                  <div className={Classes.btn_container}>
+                    <button
+                      className={Classes.btn}
+                      onClick={() => Increament(item)}
+                    >
+                      <ArrowDropUpIcon size={30} />
+                    </button>
+                    <span>{item?.amount}</span>
+                    <button
+                      className={Classes.btn}
+                      onClick={() => Decreament(item.id)}
+                    >
+                      <ArrowDropDownIcon size={30} />
+                    </button>
+                  </div>
                 </section>
               );
             })
@@ -46,7 +86,7 @@ function Cart() {
         {basket?.length !== 0 && (
           <div className={Classes.subTotal}>
             <div>
-              <p>Subtotal ({basket?.length} items)</p>
+              <p>Subtotal ({totalItem} items)</p>
               <CurrencyFormat amount={total} />
             </div>
             <div>

@@ -1,9 +1,9 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Rating } from "@mui/material";
 import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import Classes from "../Product/Product.module.css";
 import { Link } from "react-router";
-import {DataContext} from "../DataProvider/DataProvider"
+import { DataContext } from "../DataProvider/DataProvider";
 import { Type } from "../../Pages/Utility/ActionType";
 
 function Productcard({ product, flex, descriptionRend, renderAdd }) {
@@ -17,7 +17,7 @@ function Productcard({ product, flex, descriptionRend, renderAdd }) {
       item: { image, id, title, rating, price, category, description },
     });
   };
- 
+
   return (
     <div
       className={`${Classes.productcard_container} ${
