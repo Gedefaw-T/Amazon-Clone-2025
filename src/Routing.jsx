@@ -12,8 +12,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 function Routing() {
   // stripe public key
-  const stripePromise = loadStripe('pk_test_51Qx344C2zgzqfpxhEDEJlBqkdex8eGScA62ahV1DLBgDQcc96zwbVrCCo2E1YvLJ16z6puKkDb2FcGF7OpgQuLiQ00L7wvy2MR')
-
+  const stripePromise = loadStripe('process.meta.env.STRIPE_PK')
 
   return (
     // creating routes clickable components using react router
