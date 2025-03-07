@@ -29,7 +29,7 @@ function Auth() {
 // sinin and sign up button function 
   const autHandler = async(e)=>{
     e.preventDefault();
-    // console.log(e);
+    console.log(e);
     console.log(e.target.name);
     if(e.target.name === "signin"){
       setLoading({...loading, signin:true});
