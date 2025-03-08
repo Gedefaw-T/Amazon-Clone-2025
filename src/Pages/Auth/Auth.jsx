@@ -12,15 +12,15 @@ import {BeatLoader} from "react-spinners"
 function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(password, email); 
+  // console.log(password, email); 
   const [{user}, dispatch] = useContext(DataContext);
-  console.log(user)
+  // console.log(user)
   const [error, setError] = useState("");
 
   // navigation to home page after sign in or signup
   const navigate =useNavigate();
   const navStateData = useLocation();
-  console.log(navStateData);
+  // console.log(navStateData);
 
 // loading spinner
   const [loading, setLoading] = useState({
@@ -31,8 +31,8 @@ function Auth() {
 // sinin and sign up button function 
   const autHandler = async(e)=>{
     e.preventDefault();
-    console.log(e);
-    console.log(e.target.name);
+    // console.log(e);
+    // console.log(e.target.name);
     if(e.target.name === "signin"){
       setLoading({...loading, signin:true});
       signInWithEmailAndPassword(auth, email, password ) .then((userInfo)=>{
@@ -79,7 +79,7 @@ function Auth() {
       <Link to= "/"> <img src = {AmazonLogoDark} alt = "amazonlogo"/> </Link>
     <div className={Classes.login_container}>
       <h1>Sign In</h1>
-      {navStateData.state.msg && <small style ={{padding: "5px", textlAlign:"center", color: "red", fontWeight: "bold"}}>
+      {navStateData.state?.msg && <small style ={{padding: "5px", textlAlign:"center", color: "red", fontWeight: "bold"}}>
       {navStateData.state.msg}</small>}
       
       <form action="">
@@ -106,7 +106,7 @@ function Auth() {
           loading.signup?<BeatLoader color= "#000" size = {15}/>:("Create your Amazon Account")
     }
         </button>
-        {error &&( <small syle={{paddingTop: "5px", color: "red",}}>{error}</small> )}
+        {error &&( <small style={{paddingTop: "5px", color: "red",}}>{error}</small> )}
     </div>
     </section>
    

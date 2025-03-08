@@ -11,10 +11,11 @@ import { db } from "../Utility/Firebase";
 import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router";
 import { doc, setDoc } from "firebase/firestore";
+import { Type } from '../Utility/ActionType';
 
 
 function Payment() {
-  const [{ basket, user }] = useContext(DataContext);
+  const [{ basket, user }, dispatch] = useContext(DataContext);
   // console.log(user)
   const totalItem = basket?.reduce((amount, item) => {
     return item?.amount + amount;
@@ -29,6 +30,7 @@ function Payment() {
   const navigate = useNavigate();
   const [carderror, setCarderror] = useState();
   const [processing, setProcessing] = useState(false);
+  
 
   const handleChange = (e) => {
     // console.log(e);
@@ -40,6 +42,7 @@ function Payment() {
 
   const handlePayment = async (e) => {
     e.preventDefault();
+    
     try {
       // contact to client secret backend functions
       const response = await axiosInstance({
@@ -58,19 +61,23 @@ function Payment() {
       });
       console.log(paymentIntent);
 
-      // firestrore data order
+      // firestrore data order using V9
       await setDoc(doc(db, "users", user.uid, "orders", paymentIntent.id), {
         basket: basket,
         amount: paymentIntent.amount,
         created: paymentIntent.created,
       });
+      // empty the basket 
+dispatch({type:Type.EMPTY_BASKET})
 
       // order firestore check process
+      // setIsSubmitting(false);
       setProcessing(false);
       navigate("/orders");
     } catch (error) {
       console.log(error);
       setProcessing(false);
+      // setIsSubmitting(false);
     }
   };
 
@@ -119,7 +126,7 @@ function Payment() {
                       <p>Total Order |</p> <CurrencyFormat amount={total} />
                     </span>
                   </div>
-                  <button type="submit">
+                  <button type="submit" >
                     {processing ? (
                       <div className={Classes.loader}>
                         <ClipLoader color="gray" size={12} />
