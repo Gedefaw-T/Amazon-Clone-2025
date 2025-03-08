@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import AmazonLogoDark from  "../../assets/Images/AmazonLogoDark.svg";
 import Layout from '../../Components/Layout/Layout'
-import {Link, useNavigate} from "react-router"
+import {Link, useNavigate, useLocation} from "react-router"
 import Classes from "./Auth.module.css"
 import { auth } from '../Utility/Firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, } from 'firebase/auth'
@@ -19,6 +19,8 @@ function Auth() {
 
   // navigation to home page after sign in or signup
   const navigate =useNavigate();
+  const navStateData = useLocation();
+  console.log(navStateData);
 
 // loading spinner
   const [loading, setLoading] = useState({
@@ -40,7 +42,8 @@ function Auth() {
           user: userInfo.user,
         });
         setLoading({...loading, signin:false});
-        navigate("/")    
+        
+        navigate(navStateData?.state.redirect || "/")   
       }) .catch((err)=>{
         setError(err.message);
         setLoading({...loading, signin:false});
@@ -57,8 +60,7 @@ function Auth() {
           user: userInfo.user,
         });
         setLoading({...loading, signup:false})
-        navigate("/")
-        
+        navigate(navStateData?.state.redirect || "/")   
         
       }).catch((err)=>{
         setError(err.message);
@@ -77,6 +79,9 @@ function Auth() {
       <Link to= "/"> <img src = {AmazonLogoDark} alt = "amazonlogo"/> </Link>
     <div className={Classes.login_container}>
       <h1>Sign In</h1>
+      {navStateData.state.msg && <small style ={{padding: "5px", textlAlign:"center", color: "red", fontWeight: "bold"}}>
+      {navStateData.state.msg}</small>}
+      
       <form action="">
         <div>
         <label htmlFor="email"> Email</label>
@@ -101,7 +106,7 @@ function Auth() {
           loading.signup?<BeatLoader color= "#000" size = {15}/>:("Create your Amazon Account")
     }
         </button>
-        {error &&( <small syle={{PaddingTop: "5px", color:"red"}}>{error}</small> )}
+        {error &&( <small syle={{paddingTop: "5px", color: "red",}}>{error}</small> )}
     </div>
     </section>
    

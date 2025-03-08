@@ -12,6 +12,7 @@ import { ClipLoader } from "react-spinners";
 import { useNavigate } from "react-router";
 import { doc, setDoc } from "firebase/firestore";
 
+
 function Payment() {
   const [{ basket, user }] = useContext(DataContext);
   // console.log(user)
