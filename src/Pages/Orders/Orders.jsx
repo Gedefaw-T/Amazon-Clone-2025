@@ -32,7 +32,7 @@ function Orders() {
         userOrdersCollectionRef,
         orderBy("created", "desc")
       );
-      // console.log(quersyOrders);
+      console.log(quersyOrders);
       const unsubscribe = onSnapshot(quersyOrders, (snapShot) => {
         const fetchOrders = snapShot.docs.map((doc) => ({
           orderid: doc.id,
